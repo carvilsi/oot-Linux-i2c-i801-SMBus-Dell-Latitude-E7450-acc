@@ -146,7 +146,7 @@ patch (see [Sources](#sources)).
 
 ## ⚠️ Disclaimer
 
-This works on my computer: a Dell Latitude E7450 (BIOS A13) running Arch Linux.
+:warning: This works on my computer: a Dell Latitude E7450 (BIOS A13) running Arch Linux.
 It replaces a kernel driver and talks to hardware directly over SMBus. If you
 do not know what you are doing, do not execute or run the content of this
 repo. Use it at your own risk; there is no warranty of any kind.
