@@ -132,3 +132,12 @@ sudo depmod -a
 - [i2c: i801: Register optional lis3lv02d i2c device on Dell machines](https://lkml.iu.edu/hypermail/linux/kernel/1701.0/01706.html): the origin of the `0x29` address
 - Upstream driver: [`drivers/i2c/busses/i2c-i801.c` (stable tree)](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/i2c/busses/i2c-i801.c)
 - Kernel docs: [lis3lv02d](https://docs.kernel.org/misc-devices/lis3lv02d.html), [i2c-i801](https://docs.kernel.org/i2c/busses/i2c-i801.html)
+
+---
+
+## ⚠️ Disclaimer
+
+This works on my computer: a Dell Latitude E7450 (BIOS A13) running Arch Linux.
+It replaces a kernel driver and talks to hardware directly over SMBus. If you
+do not know what you are doing, do not execute or run the content of this
+repo. Use it at your own risk; there is no warranty of any kind.
