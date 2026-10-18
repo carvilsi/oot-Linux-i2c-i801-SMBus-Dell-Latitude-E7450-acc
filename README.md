@@ -41,6 +41,7 @@ must be rebuilt for every kernel.
 | `build.sh` | fetches upstream `i2c-i801.c` for a kernel, patches it, builds it |
 | `Makefile` | kbuild out-of-tree makefile (`KVER`, `KDIR` overridable) |
 | `99-lis3lv02d-e7450.rules` | udev rule that instantiates `lis3lv02d` at `0x29` on the SMBus |
+| `LICENSE` | GPL-2.0 text (the repo is GPL-2.0-or-later) |
 
 ## Requirements
 
@@ -132,6 +133,14 @@ sudo depmod -a
 - [i2c: i801: Register optional lis3lv02d i2c device on Dell machines](https://lkml.iu.edu/hypermail/linux/kernel/1701.0/01706.html): the origin of the `0x29` address
 - Upstream driver: [`drivers/i2c/busses/i2c-i801.c` (stable tree)](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/i2c/busses/i2c-i801.c)
 - Kernel docs: [lis3lv02d](https://docs.kernel.org/misc-devices/lis3lv02d.html), [i2c-i801](https://docs.kernel.org/i2c/busses/i2c-i801.html)
+
+## License
+
+[GPL-2.0-or-later](LICENSE), the same license as the upstream
+`drivers/i2c/busses/i2c-i801.c` that the patch modifies.
+
+The quirk in `i2c-i801-e7450-noirq.patch` is based on Marius Hoch's 2023
+patch (see [Sources](#sources)).
 
 ---
 

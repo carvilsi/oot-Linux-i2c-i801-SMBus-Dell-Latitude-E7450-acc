@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Rebuild i2c-i801 with the Dell Latitude E7450 no-IRQ quirk for a given kernel.
 # Usage: ./build.sh [kernel-release]   (default: running kernel)
 set -euo pipefail
