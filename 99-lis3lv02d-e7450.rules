@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="i2c", KERNEL=="i2c-*", ATTR{name}=="SMBus I801 adapter*", RUN+="/bin/sh -c 'echo lis3lv02d 0x29 > /sys/bus/i2c/devices/%k/new_device'"

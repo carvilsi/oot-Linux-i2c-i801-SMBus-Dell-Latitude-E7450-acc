@@ -1,0 +1,12 @@
+# upstream source, fetched by build.sh for the target kernel
+i2c-i801.c
+
+# kbuild artifacts
+*.o
+*.ko
+*.mod
+*.mod.c
+*.cmd
+.module-common.o
+modules.order
+Module.symvers

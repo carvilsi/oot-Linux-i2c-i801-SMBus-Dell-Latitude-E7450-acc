@@ -1,0 +1,36 @@
+--- a/drivers/i2c/busses/i2c-i801.c
++++ b/drivers/i2c/busses/i2c-i801.c
+@@ -1534,6 +1534,20 @@
+ 	pci_write_config_byte(priv->pci_dev, SMBHSTCFG, priv->original_hstcfg);
+ }
+ 
++/*
++ * These DELL devices claim an IRQ for the SMBus (usually 18), but we can't use
++ * it, as its actually for the I2C accelerometer.
++ */
++static const struct dmi_system_id dmi_force_no_irq[] = {
++	{
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "Latitude E7450"),
++		},
++	},
++	{} /* Terminating entry */
++};
++
+ static int i801_probe(struct pci_dev *dev, const struct pci_device_id *id)
+ {
+ 	int err, i, bar = SMBBAR;
+@@ -1566,6 +1580,12 @@
+ 	if (!(priv->features & FEATURE_BLOCK_BUFFER))
+ 		priv->features &= ~FEATURE_BLOCK_PROC;
+ 
++	if (dmi_check_system(dmi_force_no_irq)) {
++		/* Force no IRQ for this device, otherwise pci_enable_device() will fail */
++		dev->irq = IRQ_NOTCONNECTED;
++		dev->irq_managed = 1;
++	}
++
+ 	/*
+ 	 * Do not call pcim_enable_device(), because the device has to remain
+ 	 * enabled on driver detach. See i801_remove() for the reasoning.
